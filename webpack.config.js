@@ -37,9 +37,9 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
+			$: "jquery",
+			jQuery: "jquery",
+			"window.jQuery": "jquery"
 		}),
 		new webpack.DefinePlugin({
 			VERSION: JSON.stringify(require("./package.json").version)
@@ -49,6 +49,7 @@ module.exports = {
 	devServer: {
 		// host: '0.0.0.0',
 		//contentBase: "./",
+		allowedHosts: process.env.MINIPAINT_ALLOWED_HOSTS?.split(',') || [],
 		static: {
 			directory: path.resolve(__dirname, "./"),
 		},
